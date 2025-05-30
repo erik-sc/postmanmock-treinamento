@@ -36,7 +36,7 @@ export default function Home() {
     setLoginError('');
     setLoginSuccess('');
     const form = e.currentTarget;
-    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const email = (form.elements.namedItem('username') as HTMLInputElement).value;
     const password = (form.elements.namedItem('password') as HTMLInputElement).value;
     const res = await loginUser(email, password);
     setLoginLoading(false);
@@ -374,6 +374,10 @@ export default function Home() {
         <h1>Cardápio</h1>
         {loadingMenu ? (
           <div style={{ padding: 32, textAlign: 'center', color: '#888' }}>Carregando cardápio...</div>
+        ) : !user ? (
+          <div style={{ padding: 32, textAlign: 'center', color: '#888', fontSize: 18 }}>
+            Faça login para visualizar o cardápio.
+          </div>
         ) : (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
             {menu.map((item) => (

@@ -45,7 +45,7 @@ export async function checkoutCart(cart: CartItem[]): Promise<{ success: boolean
 
 export async function loginUser(email: string, password: string): Promise<{ success: boolean; message: string; token?: string }> {
     try {
-        const res = await fetch(`${API_URL}/login`, {
+        const res = await fetch(`${API_URL}/auth`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
